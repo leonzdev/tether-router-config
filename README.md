@@ -28,3 +28,10 @@ Checkout and build with golang: [tether-router-monitor](https://github.com/leonz
 
 Put binary in `/root/.bin` or anywhere in `PATH`
 Put dependencies in `/root/.bin` or `PATH`
+
+Service config
+```
+/etc/init.d/tethermond
+```
+
+Remember to insert your Grafana Cloud API key.
