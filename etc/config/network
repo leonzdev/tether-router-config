@@ -6,8 +6,7 @@ config interface 'loopback'
 	option netmask '255.0.0.0'
 
 config globals 'globals'
-	option packet_steering '1'
-	option ula_prefix 'ddbd:bd5b:53be::/48'
+	option ula_prefix 'fd87:1c94:cbc2::/48'
 
 config device
 	option name 'br-lan'
@@ -20,11 +19,7 @@ config interface 'lan'
 	option proto 'static'
 	option ipaddr '192.168.1.1'
 	option netmask '255.255.255.0'
-	option ip6assign '60'
-	list dns '2001:4860:4860::8888'
-	option ipv6class 'local'
 	option delegate '0'
-	list ip6class 'local'
 
 config interface 'tether0'
 	option proto 'dhcp'
@@ -45,4 +40,21 @@ config interface 'tether3'
 	option proto 'dhcp'
 	option device 'usb3'
 	option metric '60'
+
+config device
+	option name 'usb0'
+
+config interface 'tether4'
+	option proto 'dhcp'
+	option device 'usb4'
+	option metric '70'
+
+config interface 'docker'
+	option device 'docker0'
+	option proto 'none'
+	option auto '0'
+
+config device
+	option type 'bridge'
+	option name 'docker0'
 

@@ -1,2 +1,2 @@
-# nft add rule inet fw4 mangle_forward oifname "usb*" ip ttl set 66
-nft add rule inet fw4 mangle_postrouting oifname "usb*" ip ttl set 66 counter
+nft add rule inet fw4 mangle_postrouting oifname usb* ip ttl set 66 counter
+# nft add rule inet fw4 mangle_prerouting iifname br-lan ip6 hoplimit set 66 counter 
