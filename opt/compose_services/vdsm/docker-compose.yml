@@ -8,7 +8,7 @@ services:
     container_name: dsm
     image: vdsm/virtual-dsm
     environment:
-      DISK_SIZE: "8G"
+      # DISK_SIZE: "8G" # so no data disk is created as a file
       DEBUG: Y
       # DHCP: Y
     devices:
@@ -20,9 +20,8 @@ services:
       - 'c *:* rwm'      
     cap_add:
       - NET_ADMIN
-    ports:
-      - 10010:5000
     volumes:
       - /opt/compose_services/vdsm/system_storage:/storage
+      # TODO: passthrough a storage device for data
     restart: on-failure
     stop_grace_period: 2m
