@@ -1,4 +1,3 @@
-
 config interface 'loopback'
 	option device 'lo'
 	option proto 'static'
@@ -11,8 +10,9 @@ config globals 'globals'
 config device
 	option name 'br-lan'
 	option type 'bridge'
-	list ports 'eth0'
 	option ipv6 '0'
+	list ports 'eth0'
+	list ports 'eth1'
 
 config interface 'lan'
 	option device 'br-lan'
@@ -58,3 +58,18 @@ config device
 	option type 'bridge'
 	option name 'docker0'
 
+config device
+	option type 'macvlan'
+	option ifname 'br-lan'
+	option mode 'bridge'
+	option name 'docker-lan-shim'
+
+config interface 'dockerlanshim'
+	option proto 'static'
+	option device 'docker-lan-shim'
+	option ipaddr '192.168.1.2'
+	option netmask '255.255.255.255'
+
+config route
+	option interface 'dockerlanshim'
+	option target '192.168.1.64/28'
